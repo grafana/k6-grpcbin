@@ -57,7 +57,7 @@ func (s *webserver) favicon(w http.ResponseWriter, r *http.Request) {
 }
 
 // By default proxy serves 80 and 443 for web page, 9000 and 9001 (with TLS) for grpc
-var index = `<!DOCTYPE html>https://github.com/grafana/k6-infrastructure/scripts/grpcbin
+var index = `<!DOCTYPE html>
 <html>
   <body>
     <h1>grpcbin: gRPC Request & Response Service</h1>
@@ -119,7 +119,7 @@ var index = `<!DOCTYPE html>https://github.com/grafana/k6-infrastructure/scripts
     </ul>
     <h2>About</h2>
 	<a href="https://github.com/moul/grpcbin">Developed</a> by <a href="https://manfred.life">Manfred Touron</a>, inspired by <a href="https://httpbin.org/">https://httpbin.org/</a>
-	and slightly tuned by <a href="https://k6.io">k6.io</a>
+	and slightly tuned by <a href="https://k6.io">Grafana k6</a>
   </body>
 </html>
 `
