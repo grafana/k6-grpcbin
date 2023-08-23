@@ -1,0 +1,42 @@
+---
+name: "push"
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    name: "Build"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.K6_DOCKERHUB_USERNAME }}
+          password: ${{ secrets.K6_DOCKERHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: grafana/k6-grpcbin:latest,grafana/k6-grpcbin:${{ github.event.release.tag_name }}
+  
+      - name: Update Docker Hub repo description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.K6_DOCKERHUB_USERNAME }}
+          password: ${{ secrets.K6_DOCKERHUB_TOKEN }}
+          repository: grafana/k6-grpcbin
