@@ -58,10 +58,18 @@ func (s *webserver) favicon(w http.ResponseWriter, r *http.Request) {
 
 // By default proxy serves 80 and 443 for web page, 9000 and 9001 (with TLS) for grpc
 var index = `<!DOCTYPE html>
-<html>
-  <body>
-    <h1>grpcbin: gRPC Request & Response Service</h1>
-    <h2>Endpoints</h2>
+<html><head></head><body>
+  <h1>Grafana k6 gRPCBin Play</h1>
+  <p><a href="https://github.com/grafana/k6-grpcbin">github.com/grafana/k6-grpcbin</a>: a simple gRPC Request &amp; Response Service based on <a href="https://github.com/moul/grpcbin">gRPCBin</a>.</p>
+  <p>Test and learn the <a href="https://k6.io/docs/javascript-api/k6-net-grpc/">k6 gRPC API</a> using this service. Additionally, for custom deployment, you can run the <a href="https://hub.docker.com/r/grafana/k6-grpcbin/">Docker image</a>.</p>
+  <p><i>Note that this is a shared testing environment - please avoid high-load tests.</i></p>
+  <h2>Examples</h2>
+  <ul>
+    <li><a href="https://k6.io/docs/javascript-api/k6-net-grpc/">k6 gRPC API</a></li>
+    <li><a href="https://github.com/grafana/k6-grpcbin/tree/main/k6_tests">grafana/k6-grpcbin/k6_tests</a></li>
+    <li><a href="https://k6.io/blog/performance-testing-grpc-services/">Blog: performance testing gRPC services</a></li>
+  </ul>
+  <h2>Endpoints</h2>
 	<ul>
     <li>grpc://{{.Host}}:9000 (without TLS)</li>
 	  <li>grpc://{{.Host}}:9001 (with TLS)</li>
@@ -111,11 +119,6 @@ var index = `<!DOCTYPE html>
           <li>PostWithEmptyBody</li>
         </ul>
       </li>
-    </ul>
-    <h2>Examples</h2>
-    <ul>
-      <li><a href="https://k6.io/docs/javascript-api/k6-net-grpc/">https://k6.io/docs/javascript-api/k6-net-grpc/</a></li>
-      <li><a href="https://k6.io/blog/performance-testing-grpc-services/">https://k6.io/blog/performance-testing-grpc-services/</a></li>
     </ul>
     <h2>About</h2>
 	<a href="https://github.com/moul/grpcbin">Developed</a> by <a href="https://manfred.life">Manfred Touron</a>, inspired by <a href="https://httpbin.org/">https://httpbin.org/</a>

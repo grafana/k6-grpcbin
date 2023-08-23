@@ -1,0 +1,10 @@
+.eggs/
+.workon
+.epio-app
+*.pyc
+.tox
+*.egg-info
+*.swp
+.vscode/
+.DS_Store
+main
