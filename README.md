@@ -19,3 +19,5 @@ or building the Docker image:
 docker build -t k6-grpcbin-local .
 docker run -it --rm -p 9000:9000 -p 8080:8080 k6-grpcbin-local
 ```
+
+The project runs an insecure gRPC service, without TLS.

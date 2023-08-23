@@ -17,7 +17,8 @@ client.load(['definitions'], 'addsvc.proto');
 export default () => {
   console.log('connecting: '+ conf.baseURL);
   client.connect(conf.baseURL, {
-    // plaintext: false
+    // should be `true` for unsecure service (without TLS)
+    plaintext: false
   });
 
   const response = client.invoke('addsvc.Add/Sum', {
@@ -26,10 +27,9 @@ export default () => {
   });
   console.log(response.message.v); // should print 3
 
-
   check(response, {
     'status is OK': (r) => r && r.status === grpc.StatusOK,
-    'response is correct': (r) => r && r.message && r.message.v === 3
+    'response is correct': (r) => r && r.message && r.message.v === "3"
   });
 
 

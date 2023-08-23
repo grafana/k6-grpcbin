@@ -19,7 +19,8 @@ client.load(['definitions'], 'hello.proto');
 export default () => {
   console.log('connecting: '+ conf.baseURL);
   client.connect(conf.baseURL, {
-    // plaintext: false
+    // should be `true` for unsecure service (without TLS)
+    plaintext: false
   });
 
   const data = { greeting: 'Bert' };
