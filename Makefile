@@ -1,4 +1,4 @@
-VERSION=0.2.0
+VERSION=0.3.0
 
 build_image:
 	docker build -t grafana/k6-grpcbin:${VERSION} .
