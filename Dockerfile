@@ -1,5 +1,5 @@
 # Source: https://levelup.gitconnected.com/complete-guide-to-create-docker-container-for-your-golang-application-80f3fb59a15e
-FROM golang:1.19.8-alpine3.17 AS builder
+FROM golang:1.21-alpine3.18 AS builder
 
 RUN mkdir -p /home/app && \
     addgroup -S --gid 1000 app && \
